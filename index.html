@@ -4,16 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Star</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome (included via CSS @import now) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div id="splash-text">To my beloved star</div>
+    </div>
+
+    <!-- Main Content Area -->
     <div class="container">
         <h1 class="main-title">For My Dearest Star</h1>
         <div class="button-container">
-            <a href="spark.html" class="button">The First Spark</a>
-            <a href="jul.html" class="button">Part 1: Jul</a>
-            <a href="reigh.html" class="button">Part 2: Reigh</a>
+            <!-- Button 1: Spark -->
+            <a href="spark.html" class="button" aria-label="The First Spark">
+                <i class="fa-solid fa-star"></i>
+                <span class="tooltip">The First Spark</span>
+            </a>
+            <!-- Button 2: Jul -->
+            <a href="jul.html" class="button" aria-label="Part 1: Jul">
+                <i class="fa-solid fa-moon"></i>
+                <span class="tooltip">Part 1: Jul</span>
+            </a>
+            <!-- Button 3: Reigh -->
+            <a href="reigh.html" class="button" aria-label="Part 2: Reigh">
+                <i class="fa-solid fa-meteor"></i> <!-- Using Meteor icon -->
+                <span class="tooltip">Part 2: Reigh</span>
+            </a>
         </div>
     </div>
+
+    <!-- Simple JavaScript for Splash Screen Fade Out -->
+    <script>
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            // Set timeout to hide splash screen
+            setTimeout(() => {
+                splash.classList.add('hidden');
+            }, 3000); // Keep splash visible for 3 seconds (adjust as needed)
+
+            // Optional: Remove splash screen from DOM after transition
+            setTimeout(() => {
+                if (splash.parentNode) {
+                   splash.parentNode.removeChild(splash);
+                }
+            }, 4500); // Must be longer than the CSS transition time (1.5s) + splash visible time (3s)
+        });
+    </script>
 </body>
 </html>
