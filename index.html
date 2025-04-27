@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Star</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Font Awesome (included via CSS @import now) -->
+    <!-- Google Fonts (now loaded via CSS @import) -->
+    <!-- Font Awesome (now loaded via CSS @import) -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home"> {/* Added class to body for specific styling */}
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div id="splash-text">To my beloved star</div>
@@ -33,7 +30,7 @@
             </a>
             <!-- Button 3: Reigh -->
             <a href="reigh.html" class="button" aria-label="Part 2: Reigh">
-                <i class="fa-solid fa-meteor"></i> <!-- Using Meteor icon -->
+                <i class="fa-solid fa-meteor"></i>
                 <span class="tooltip">Part 2: Reigh</span>
             </a>
         </div>
@@ -45,15 +42,25 @@
             const splash = document.getElementById('splash-screen');
             // Set timeout to hide splash screen
             setTimeout(() => {
-                splash.classList.add('hidden');
-            }, 3000); // Keep splash visible for 3 seconds (adjust as needed)
+                if (splash) {
+                    splash.classList.add('hidden');
+                }
+            }, 3000); // Keep splash visible for 3 seconds
 
             // Optional: Remove splash screen from DOM after transition
-            setTimeout(() => {
-                if (splash.parentNode) {
-                   splash.parentNode.removeChild(splash);
-                }
-            }, 4500); // Must be longer than the CSS transition time (1.5s) + splash visible time (3s)
+            // This is slightly more complex to ensure it doesn't interfere
+            if (splash) {
+                splash.addEventListener('transitionend', function handleTransitionEnd(event) {
+                    // Make sure we're listening for the opacity transition specifically
+                    if (event.propertyName === 'opacity' && splash.classList.contains('hidden')) {
+                        if (splash.parentNode) {
+                            splash.parentNode.removeChild(splash);
+                        }
+                        // Remove the listener to prevent it firing multiple times
+                        splash.removeEventListener('transitionend', handleTransitionEnd);
+                    }
+                });
+            }
         });
     </script>
 </body>
