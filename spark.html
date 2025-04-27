@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The First Spark</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Font Awesome (included via CSS @import now) -->
+    <!-- Google Fonts (now loaded via CSS @import) -->
+    <!-- Font Awesome (now loaded via CSS @import) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Set opacity to 1 directly for content pages, or add fade-in if desired -->
-    <div class="container" style="opacity: 1; animation: none;">
+    <div class="container"> {/* Removed inline style, CSS handles visibility */}
         <div class="content-page">
             <h1>The First Spark</h1>
             <div class="content">
-                <!-- Using <pre> preserves line breaks from your poem -->
                 <pre>
 In the hush of the world,
 we found each other
