@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
 
-/* General Styles & Star Theme */
 body {
     margin: 0;
     padding: 0;
@@ -13,7 +12,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* !!! IMPORTANT: Make sure you have an image named 'stars-bg.jpg' in the same folder !!! */
     background-image: url('stars-bg.jpg');
     background-size: cover;
     background-position: center center;
@@ -21,7 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Main Container */
 .container {
     width: 90%;
     max-width: 900px;
@@ -29,18 +26,15 @@ body {
     box-sizing: border-box;
 }
 
-/* Home page container fade-in */
 body.home .container {
     opacity: 0;
     animation: fadeInContent 1.5s ease-out 3.5s forwards;
 }
 
-/* Content page containers visible immediately */
 body:not(.home) .container {
     opacity: 1;
 }
 
-/* Splash Screen Styles */
 #splash-screen {
     position: fixed;
     top: 0;
@@ -60,7 +54,7 @@ body:not(.home) .container {
 #splash-screen.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Disable interaction when hidden */
+    pointer-events: none;
 }
 
 #splash-text {
@@ -73,7 +67,6 @@ body:not(.home) .container {
     animation: fadeInSplashText 2s ease-in 0.5s forwards;
 }
 
-/* Keyframes for animations */
 @keyframes fadeInSplashText {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -84,7 +77,6 @@ body:not(.home) .container {
     to { opacity: 1; }
 }
 
-/* Main Page Specific Title */
 .main-title {
     font-family: 'Playfair Display', serif;
     color: #f5d76e;
@@ -93,7 +85,6 @@ body:not(.home) .container {
     text-shadow: 0 0 8px rgba(245, 215, 110, 0.6);
 }
 
-/* Button Container */
 .button-container {
     display: flex;
     justify-content: center;
@@ -103,7 +94,6 @@ body:not(.home) .container {
     flex-wrap: wrap;
 }
 
-/* Buttons */
 .button {
     display: flex;
     justify-content: center;
@@ -117,7 +107,7 @@ body:not(.home) .container {
     border-radius: 50%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.3s ease;
-    position: relative; /* Needed for tooltip positioning */
+    position: relative;
 }
 
 .button i {
@@ -126,7 +116,6 @@ body:not(.home) .container {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect for devices supporting hover */
 @media (hover: hover) and (pointer: fine) {
     .button:hover {
         background: linear-gradient(145deg, #3f3f8f, #5a5abf);
@@ -150,7 +139,6 @@ body:not(.home) .container {
     }
 }
 
-/* Tooltip */
 .button .tooltip {
     visibility: hidden;
     width: 120px;
@@ -168,10 +156,9 @@ body:not(.home) .container {
     transition: opacity 0.3s ease;
     font-size: 0.9em;
     font-family: 'Cormorant Garamond', serif;
-    pointer-events: none; /* Prevent tooltips interfering with clicks/touch */
+    pointer-events: none;
 }
 
-/* Content Page Box */
 .content-page {
     text-align: left;
     background-color: rgba(10, 10, 31, 0.88);
@@ -193,7 +180,6 @@ body:not(.home) .container {
     text-shadow: 0 0 6px rgba(240, 196, 0, 0.5);
 }
 
-/* Content Text Styling (Justified Letters) */
 .content p, .content div {
     line-height: 1.7;
     font-size: 1.1em;
@@ -206,7 +192,6 @@ body:not(.home) .container {
     -ms-hyphens: auto;
 }
 
-/* Content Poem Styling (Left-aligned) */
 .content pre {
     white-space: pre-wrap;
     font-family: inherit;
@@ -214,20 +199,18 @@ body:not(.home) .container {
     color: #e0e0e0;
     margin-bottom: 1.2em;
     line-height: 1.7;
-    text-align: left; /* Override justification */
-    hyphens: none; /* Disable hyphens */
+    text-align: left;
+    hyphens: none;
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
 }
 
-/* Emphasized text */
 .content em {
     color: #f5d76e;
     font-style: italic;
 }
 
-/* Back Link */
 .back-link {
     display: block;
     text-align: center;
@@ -242,7 +225,6 @@ body:not(.home) .container {
     margin-right: 0.5em;
 }
 
-/* --- Responsive Design Adjustments --- */
 @media (max-width: 768px) {
     #splash-text, .main-title {
         font-size: 2.4em;
