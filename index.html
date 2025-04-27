@@ -6,27 +6,22 @@
     <title>To My Star</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="home"> 
-    <!-- Splash Screen -->
+<body class="home">
     <div id="splash-screen">
         <div id="splash-text">To my beloved star</div>
     </div>
 
-    <!-- Main Content Area -->
     <div class="container">
         <h1 class="main-title">For My Dearest Star</h1>
         <div class="button-container">
-            <!-- Button 1: Spark -->
             <a href="spark.html" class="button" aria-label="The First Spark">
                 <i class="fa-solid fa-star"></i>
                 <span class="tooltip">The First Spark</span>
             </a>
-            <!-- Button 2: Jul -->
             <a href="jul.html" class="button" aria-label="Part 1: Jul">
                 <i class="fa-solid fa-moon"></i>
                 <span class="tooltip">Part 1: Jul</span>
             </a>
-            <!-- Button 3: Reigh -->
             <a href="reigh.html" class="button" aria-label="Part 2: Reigh">
                 <i class="fa-solid fa-meteor"></i>
                 <span class="tooltip">Part 2: Reigh</span>
@@ -34,25 +29,20 @@
         </div>
     </div>
 
-    <!-- JavaScript for Splash Screen Fade Out & Removal -->
     <script>
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
 
             if (splash) {
-                // Start the fade-out transition after a delay
                 setTimeout(() => {
                     splash.classList.add('hidden');
-                }, 3000); // 3 seconds visible duration
+                }, 3000);
 
-                // Add an event listener to remove the element AFTER the transition ends
                 splash.addEventListener('transitionend', function handleTransitionEnd(event) {
-                    // Ensure we're reacting to the opacity transition ending
                     if (event.propertyName === 'opacity' && splash.classList.contains('hidden')) {
                         if (splash.parentNode) {
                             splash.parentNode.removeChild(splash);
                         }
-                        // Clean up listener to prevent memory leaks
                         splash.removeEventListener('transitionend', handleTransitionEnd);
                     }
                 });
