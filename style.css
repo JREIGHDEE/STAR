@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
 
+/* General Styles & Star Theme */
 body {
     margin: 0;
     padding: 0;
@@ -19,6 +20,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Main Container */
 .container {
     width: 90%;
     max-width: 900px;
@@ -26,15 +28,18 @@ body {
     box-sizing: border-box;
 }
 
+/* Home page container fade-in */
 body.home .container {
     opacity: 0;
     animation: fadeInContent 1.5s ease-out 3.5s forwards;
 }
 
+/* Content page containers visible immediately */
 body:not(.home) .container {
     opacity: 1;
 }
 
+/* Splash Screen Styles */
 #splash-screen {
     position: fixed;
     top: 0;
@@ -67,6 +72,7 @@ body:not(.home) .container {
     animation: fadeInSplashText 2s ease-in 0.5s forwards;
 }
 
+/* Keyframes for animations */
 @keyframes fadeInSplashText {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -77,6 +83,7 @@ body:not(.home) .container {
     to { opacity: 1; }
 }
 
+/* Main Page Specific Title */
 .main-title {
     font-family: 'Playfair Display', serif;
     color: #f5d76e;
@@ -85,6 +92,7 @@ body:not(.home) .container {
     text-shadow: 0 0 8px rgba(245, 215, 110, 0.6);
 }
 
+/* Button Container */
 .button-container {
     display: flex;
     justify-content: center;
@@ -94,6 +102,7 @@ body:not(.home) .container {
     flex-wrap: wrap;
 }
 
+/* Buttons */
 .button {
     display: flex;
     justify-content: center;
@@ -116,6 +125,158 @@ body:not(.home) .container {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Tooltip */
+.button .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.9em;
+    font-family: 'Cormorant Garamond', serif;
+    pointer-events: none;
+}
+
+/* Content Page Box */
+.content-page {
+    text-align: left;
+    background-color: rgba(10, 10, 31, 0.88);
+    padding: 2em 2.5em;
+    border-radius: 15px;
+    border: 1px solid #3a3a7a;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-top: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-page h1 {
+    font-family: 'Playfair Display', serif;
+    color: #f0c400;
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: 2.2em;
+    text-shadow: 0 0 6px rgba(240, 196, 0, 0.5);
+}
+
+/* Content Text Styling (Justified Letters) */
+.content p, .content div {
+    line-height: 1.7;
+    font-size: 1.1em;
+    color: #e0e0e0;
+    margin-bottom: 1.2em;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Content Poem Styling (Left-aligned) */
+.content pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 1.1em;
+    color: #e0e0e0;
+    margin-bottom: 1.2em;
+    line-height: 1.7;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+}
+
+/* Emphasized text */
+.content em {
+    color: #f5d76e;
+    font-style: italic;
+}
+
+/* Back Link */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 2.5em;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.back-link i {
+    margin-right: 0.5em;
+}
+
+/* Styles for the 'First Love' page (Drawing, Quote, Video) */
+.drawing-image {
+    display: block;
+    max-width: 80%;
+    height: auto;
+    margin: 1em auto 2.5em auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quote {
+    text-align: center;
+    font-size: 1.2em;
+    font-style: italic;
+    color: #f0c400;
+    margin: 2em auto 2.5em auto;
+    max-width: 700px;
+    line-height: 1.6;
+    padding: 0 1em;
+    box-sizing: border-box;
+    text-align: center; /* Overrides the default justify for paragraphs */
+    hyphens: none; /* Disable hyphens for the quote */
+     -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+}
+
+.audio-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    margin-top: 2.5em;
+    margin-bottom: 0.8em;
+    color: #e0e0e0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 640px;
+    background: #000;
+    margin: 1em auto 2em auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- Hover Effects (for devices supporting hover) --- */
 @media (hover: hover) and (pointer: fine) {
     .button:hover {
         background: linear-gradient(145deg, #3f3f8f, #5a5abf);
@@ -139,92 +300,8 @@ body:not(.home) .container {
     }
 }
 
-.button .tooltip {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-size: 0.9em;
-    font-family: 'Cormorant Garamond', serif;
-    pointer-events: none;
-}
 
-.content-page {
-    text-align: left;
-    background-color: rgba(10, 10, 31, 0.88);
-    padding: 2em 2.5em;
-    border-radius: 15px;
-    border: 1px solid #3a3a7a;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    margin-top: 1em;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.content-page h1 {
-    font-family: 'Playfair Display', serif;
-    color: #f0c400;
-    text-align: center;
-    margin-bottom: 1.5em;
-    font-size: 2.2em;
-    text-shadow: 0 0 6px rgba(240, 196, 0, 0.5);
-}
-
-.content p, .content div {
-    line-height: 1.7;
-    font-size: 1.1em;
-    color: #e0e0e0;
-    margin-bottom: 1.2em;
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-}
-
-.content pre {
-    white-space: pre-wrap;
-    font-family: inherit;
-    font-size: 1.1em;
-    color: #e0e0e0;
-    margin-bottom: 1.2em;
-    line-height: 1.7;
-    text-align: left;
-    hyphens: none;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-}
-
-.content em {
-    color: #f5d76e;
-    font-style: italic;
-}
-
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 2.5em;
-    color: #aaa;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.back-link i {
-    margin-right: 0.5em;
-}
-
+/* --- Responsive Design Adjustments --- */
 @media (max-width: 768px) {
     #splash-text, .main-title {
         font-size: 2.4em;
@@ -244,13 +321,25 @@ body:not(.home) .container {
     .content-page h1 { font-size: 1.9em; }
     .content p, .content div, .content pre { font-size: 1em; line-height: 1.6; }
     .back-link { margin-top: 2em; font-size: 0.95em; }
+
+    /* Responsive adjustments for drawing/quote/video */
+    .drawing-image { max-width: 85%; margin-bottom: 2em;}
+    .quote { font-size: 1.1em; margin: 1.5em auto 2em auto; }
+    .audio-title { font-size: 1.6em; margin-top: 2em; }
+    .video-container { max-width: 95%; }
 }
 
 @media (max-width: 480px) {
     #splash-text, .main-title { font-size: 2em; }
     .button { width: 80px; height: 80px; }
     .button i { font-size: 1.6em; }
+
     .content-page { padding: 1.2em 1em; }
     .content-page h1 { font-size: 1.7em; }
     .content p, .content div, .content pre { font-size: 0.95em; }
+
+    /* Further responsive adjustments for drawing/quote/video */
+    .drawing-image { max-width: 90%; }
+    .quote { font-size: 1em; }
+    .audio-title { font-size: 1.4em; }
 }
