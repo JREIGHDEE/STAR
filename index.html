@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Star</title>
-    <!-- Google Fonts (now loaded via CSS @import) -->
-    <!-- Font Awesome (now loaded via CSS @import) -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="home"> {/* Added class to body for specific styling */}
+<body class="home"> {/* Class differentiates this page for CSS */}
     <!-- Splash Screen -->
     <div id="splash-screen">
         <div id="splash-text">To my beloved star</div>
@@ -36,27 +34,25 @@
         </div>
     </div>
 
-    <!-- Simple JavaScript for Splash Screen Fade Out -->
+    <!-- JavaScript for Splash Screen Fade Out & Removal -->
     <script>
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
-            // Set timeout to hide splash screen
-            setTimeout(() => {
-                if (splash) {
-                    splash.classList.add('hidden');
-                }
-            }, 3000); // Keep splash visible for 3 seconds
 
-            // Optional: Remove splash screen from DOM after transition
-            // This is slightly more complex to ensure it doesn't interfere
             if (splash) {
+                // Start the fade-out transition after a delay
+                setTimeout(() => {
+                    splash.classList.add('hidden');
+                }, 3000); // 3 seconds visible duration
+
+                // Add an event listener to remove the element AFTER the transition ends
                 splash.addEventListener('transitionend', function handleTransitionEnd(event) {
-                    // Make sure we're listening for the opacity transition specifically
+                    // Ensure we're reacting to the opacity transition ending
                     if (event.propertyName === 'opacity' && splash.classList.contains('hidden')) {
                         if (splash.parentNode) {
                             splash.parentNode.removeChild(splash);
                         }
-                        // Remove the listener to prevent it firing multiple times
+                        // Clean up listener to prevent memory leaks
                         splash.removeEventListener('transitionend', handleTransitionEnd);
                     }
                 });
