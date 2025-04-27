@@ -1,97 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'); /* Font Awesome CDN */
+
 /* General Styles & Star Theme */
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0a0a1f; /* Very dark blue, like a night sky */
-    color: #e0e0e0; /* Light grey/white text */
-    min-height: 100vh; /* Ensure body takes full viewport height */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    font-family: 'Cormorant Garamond', serif; /* Poetic font */
+    background-color: #050a1a; /* Very dark base color */
+    color: #e8e8e8; /* Slightly off-white text */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    /* Optional: Add a subtle starry background */
-    /* background-image: url('your-starry-background.jpg'); */
-    /* background-size: cover; */
-    /* background-attachment: fixed; */
+    /* Starry Background Image */
+    background-image: url('stars-bg.jpg'); /* <<<--- CHANGE 'stars-bg.jpg' if your image has a different name */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Parallax effect */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* Main Container - Controls fade-in */
 .container {
-    max-width: 800px; /* Limit content width */
+    max-width: 900px;
     padding: 20px;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInContent 1.5s ease-out 3.5s forwards; /* Fade in after splash */
+}
+
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #050a1a; /* Match body background base */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#splash-text {
+    font-family: 'Playfair Display', serif; /* Title font */
+    font-size: 3.5em; /* Adjust as needed */
+    color: #ffd700; /* Gold */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    opacity: 0;
+    animation: fadeInSplashText 2s ease-in 0.5s forwards; /* Fade in text */
+}
+
+/* Keyframes for animations */
+@keyframes fadeInSplashText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Main Page Specific */
 .main-title {
-    color: #ffd700; /* Gold color for the title */
-    font-size: 3em;
-    margin-bottom: 1.5em;
-    text-shadow: 0 0 5px #ffd700; /* Subtle glow */
+    font-family: 'Playfair Display', serif; /* Title font */
+    color: #f5d76e; /* Brighter Gold */
+    font-size: 3.5em;
+    margin-bottom: 2em;
+    text-shadow: 0 0 8px rgba(245, 215, 110, 0.6);
 }
 
 .button-container {
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 1.5em; /* Space between buttons */
-    align-items: center; /* Center buttons within the container */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 4em; /* Increased space between buttons */
+    align-items: center;
+    margin-top: 3em;
 }
 
 .button {
-    display: inline-block;
-    padding: 1em 2.5em;
-    background-color: #3a3a7a; /* Muted deep blue/purple */
+    display: flex; /* Use flex to center icon */
+    justify-content: center;
+    align-items: center;
+    width: 120px;  /* Circle dimensions */
+    height: 120px; /* Circle dimensions */
+    background: linear-gradient(145deg, #2a2a6a, #3f3f8f); /* Gradient background */
     color: #ffffff;
     text-decoration: none;
-    font-size: 1.2em;
-    border: 1px solid #5a5abf; /* Slightly lighter border */
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    min-width: 250px; /* Give buttons a consistent width */
+    border: 2px solid #6a6acf; /* Slightly lighter border */
+    border-radius: 50%; /* Make it a circle */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, background 0.4s ease, box-shadow 0.3s ease;
+    position: relative; /* Needed for tooltip */
+}
+
+.button i { /* Icon styling */
+    font-size: 2.5em; /* Icon size */
+    color: #f0e0a0; /* Light gold icon color */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
-    background-color: #5a5abf; /* Lighter shade on hover */
-    transform: translateY(-3px); /* Slight lift effect */
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Gold glow on hover */
+    background: linear-gradient(145deg, #3f3f8f, #5a5abf);
+    transform: translateY(-8px) scale(1.05); /* Lift and slightly enlarge */
+    box-shadow: 0 12px 25px rgba(255, 215, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1); /* Gold glow on hover */
+}
+
+.button:hover i {
+    color: #ffd700; /* Brighter gold icon on hover */
+    transform: scale(1.1);
+}
+
+/* Tooltip for Button Label (Accessibility & Clarity) */
+.button .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the button */
+    left: 50%;
+    margin-left: -60px; /* Use half of the width */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.9em;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Content Page Specific */
 .content-page {
-    text-align: left; /* Align text left for readability */
-    background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
-    padding: 2em 3em;
-    border-radius: 10px;
+    text-align: left;
+    background-color: rgba(10, 10, 31, 0.85); /* Darker, semi-transparent background for readability */
+    padding: 2.5em 3.5em;
+    border-radius: 15px;
     border: 1px solid #3a3a7a;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-top: 2em; /* Add some space from the top on content pages */
 }
 
 .content-page h1 {
-    color: #f0c400; /* Slightly different gold */
-    text-align: center; /* Center the title */
+    font-family: 'Playfair Display', serif; /* Title font */
+    color: #f0c400;
+    text-align: center;
     margin-bottom: 1.5em;
+    font-size: 2.5em;
+    text-shadow: 0 0 6px rgba(240, 196, 0, 0.5);
 }
 
-.content p, .content pre {
-    line-height: 1.7; /* Improve readability */
-    font-size: 1.1em;
-    color: #dcdcdc; /* Slightly off-white */
-    margin-bottom: 1em; /* Space between paragraphs */
+.content p, .content pre, .content div { /* Added div for the last part */
+    line-height: 1.8; /* Slightly more spacing */
+    font-size: 1.15em;
+    color: #e0e0e0;
+    margin-bottom: 1.2em;
 }
 
 .content pre {
-    white-space: pre-wrap; /* Allow poem lines to wrap */
-    font-family: inherit; /* Use the same font as the body */
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+.content em { /* Style emphasized text */
+    color: #f5d76e; /* Gold for emphasized text */
+    font-style: italic;
 }
 
 .back-link {
-    display: block; /* Make it a block element */
-    text-align: center; /* Center the link */
-    margin-top: 2.5em;
+    display: block;
+    text-align: center;
+    margin-top: 3em;
     color: #aaa;
     text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s ease;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .back-link:hover {
-    color: #ffd700; /* Gold on hover */
+    color: #ffd700;
+    transform: scale(1.05);
 }
